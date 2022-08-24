@@ -1,4 +1,4 @@
-# ED-Treino
+# Estrutura de dados
 
 
-##Reprositorio usado para treinos de ED.
+##Reprositorio usado durante a disciplina de estrutura de dados.
