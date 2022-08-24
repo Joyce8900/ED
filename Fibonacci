@@ -28,7 +28,10 @@ unsigned long int fibrI (int n ) {
 }
 
 int main (void){
-    printf("%lu\n",fibrI(30));
+    int n;
+    
+    printf("Digite N :  \n");
+    scanf("%d",&n);
     //printf("%d\n",fibR(30));
-    printf("%d\n",c);
+    printf("%lu\n",fibrI(n));
 }
