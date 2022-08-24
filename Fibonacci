@@ -10,19 +10,20 @@ int fibR (int n ) {
     return fibR (n-1)+ fibR (n-2);
     
 }
-unsigned long int fibrI (int n ) {
+unsigned long int fibI (int n ) {
     if (n<2)
         return n;
     
     int n1 = 1;
     int n2 = 0;
-    int v ;
-  c++;
+    unsigned long int v ;
+  
     for (int i = 0;i<n;i=i+1){
         v = n1;
         n1 = n1+n2;
         n2=v;
-        c++;
+        c=c+1;
+        printf("%lu %d\n",v , c);
     }
     return v;
 }
@@ -30,8 +31,8 @@ unsigned long int fibrI (int n ) {
 int main (void){
     int n;
     
-    printf("Digite N :  \n");
+    printf("Digite N:");
     scanf("%d",&n);
-    //printf("%d\n",fibR(30));
-    printf("%lu\n",fibrI(n));
+    //printf("Com Recursividade: %d\n",fibR(n));
+    fibI(n);
 }
