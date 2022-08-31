@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+
+int searchr (int v[], int n, int k){
+  if (n==-1 || v[n]==k){
+    return n+1;
+  }
+  return searchr (v,n-1,k);
+}
+
+int searchi (int v[], int n, int k){
+  int s =-1;
+  while (n>=0)
+  {
+    if (v[n]==k){
+      s = n;
+      break;
+    }
+    n=n-1;
+  }
+  return s+1;
+}
+
+int main (void){
+  int v[] = {1,9,4,5,6,6,5,3,2,0,7};
+  int n = sizeof(v)/sizeof(int);
+  int k, achado;
+
+  printf("Digite k:\n");
+  scanf ("%d",&k);
+  achado = searchi(v,n,k);
+  if (achado){
+    printf("%d Foi localizado na posição %d\n",k,achado);
+
+  }
+  else
+    printf("%d Não foi encontrado\n",k);
+
+  
+  printf ("Com rercusividade: %d\n", searchr(v,n,k));
+  printf ("Com iteratividade: %d\n", searchi(v,n,k));
+
+}
