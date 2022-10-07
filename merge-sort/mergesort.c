@@ -124,7 +124,7 @@ int main()
             
          
             gettimeofday(&b, NULL);
-            mergeSort(v, 0, i);
+            mergeSort(v, 0, i-1);
             gettimeofday(&a, NULL);
          
             ub = 1000000 * b.tv_sec + b.tv_usec;
