@@ -25,7 +25,7 @@ void insertion_sort (int v[], int n){
 
 }
 //Médio Caso
-
+/*
 int main()
 {
     int i, n, *v;
@@ -63,47 +63,47 @@ int main()
     
     return 0;
 }
+*/
 
+//Pior caso
+int main()
+{
+    int i, n, *v;
+    struct timeval b, a;
+    long long unsigned int t, ub, ua;
 
-//Pior Caso
-// int main()
-// {
-//     int i, n, *v;
-//     struct timeval b, a;
-//     long long unsigned int t, ub, ua;
+    srand(time(NULL));
 
-//     srand(time(NULL));
+    for (n = 0; n <= 10000; n = n + 10)
+    {
+        v = (int *) malloc(n * sizeof(int));
 
-//     for (n = 0; n <= 10000; n = n + 10)
-//     {
-//         v = (int *) malloc(n * sizeof(int));
+        for (i = n-1; i >=0; i--)
+            v[i] = i;
 
-//         for (i = n-1; i >=0; i--)
-//             v[i] = i;
-
-// 	t = 0;
-// 	for (i = 0; i < 10; i++)
-// 	{
+	t = 0;
+	for (i = 0; i < 10; i++)
+	{
             
             
          
-//             gettimeofday(&b, NULL);
-//             insertion_sort(v, n);
-//             gettimeofday(&a, NULL);
+            gettimeofday(&b, NULL);
+            insertion_sort(v, n);
+            gettimeofday(&a, NULL);
          
-//             ub = 1000000 * b.tv_sec + b.tv_usec;
-//             ua = 1000000 * a.tv_sec + a.tv_usec;
+            ub = 1000000 * b.tv_sec + b.tv_usec;
+            ua = 1000000 * a.tv_sec + a.tv_usec;
 
-// 	    t = t + (ua - ub);
-// 	}
+	    t = t + (ua - ub);
+	}
          
-//         free(v);
+        free(v);
          
-//         printf("%d \t%lf\n", n, t / 1000.0);
-//     }
+        printf("%d \t%lf\n", n, t / 1000.0);
+    }
     
-//     return 0;
-// }
+    return 0;
+}
 
 /*
 Melhor Caso
