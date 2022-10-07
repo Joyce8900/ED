@@ -65,7 +65,7 @@ int main()
 }
 
 
-//Pior caso
+// Pior caso
 // int main()
 // {
 //     int i, n, *v;
