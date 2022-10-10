@@ -1,142 +1,73 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <time.h>
 #include <sys/time.h>
+#include <math.h>
 
-void mergeSort(int *v, int s, int n)
-{
-    int i, j, k, metadeTamanho, *vetorTemp;
-    if (s == n)
-        return;
-    metadeTamanho = (s + n) / 2;
+void merge_sort(int *, int, int, int*);
+void merge(int*, int, int, int, int*);
 
-    mergeSort(v, s, metadeTamanho);
-    mergeSort(v, metadeTamanho + 1, n);
-
-    i = s;
-    j = metadeTamanho + 1;
-    k = 0;
-    vetorTemp = (int *)malloc(sizeof(int) * (n - s + 1));
-
-    while (i < metadeTamanho + 1 || j < n + 1)
-    {
-        if (i == metadeTamanho + 1)
-        {
-            vetorTemp[k] = v[j];
-            j++;
-            k++;
-        }
-        else
-        {
-            if (j == n + 1)
-            {
-                vetorTemp[k] = v[i];
-                i++;
-                k++;
-            }
-            else
-            {
-                if (v[i] < v[j])
-                {
-                    vetorTemp[k] = v[i];
-                    i++;
-                    k++;
-                }
-                else
-                {
-                    vetorTemp[k] = v[j];
-                    j++;
-                    k++;
-                }
-            }
-        }
-    }
-    for (i = s; i <= n; i++)
-    {
-        v[i] = vetorTemp[i - s];
-    }
-    free(vetorTemp);
-}
-
-/*Medio Caso
-
-int main()
-{
-    int i, n, *v;
-    struct timeval b, a;
-    long long unsigned int t, ub, ua;
-
-    srand(time(NULL));
-
-    for (n = 10; n <= 100000; n = n + 100)
-    {
-        v = (int *) malloc(n * sizeof(int));
-
-        for (i = 0; i < n; i++)
-            v[i] = rand() % 1000 + 1;
-
-    t = 0;
-    for (i = 0; i < 10; i++)
-    {
-
-
-            gettimeofday(&b, NULL);
-            mergeSort(v, 0,i);
-            gettimeofday(&a, NULL);
-
-            ub = 1000000 * b.tv_sec + b.tv_usec;
-            ua = 1000000 * a.tv_sec + a.tv_usec;
-
-        t = t + (ua - ub);
-    }
-
-        free(v);
-
-        printf("%d \t %lf\n", n, t / 1000.0);
-    }
-
-    return 0;
-  }
-  */
-
-
-//Melhor Caso
-int main()
-{
-    int i, n, *v;
-    struct timeval b, a;
-    long long unsigned int t, ub, ua;
-
-    srand(time(NULL));
-
-    for (n = 10; n <= 100000; n = n + 100)
-    {
-        v = (int *) malloc(n * sizeof(int));
-
-        for (i = 0; i < n; i++)
-            v[i] = i;
-
-	t = 0;
-	for (i = 0; i < 10; i++)
-	{
-           
-            
-         
-            gettimeofday(&b, NULL);
-            mergeSort(v, 0, i-1);
-            gettimeofday(&a, NULL);
-         
-            ub = 1000000 * b.tv_sec + b.tv_usec;
-            ua = 1000000 * a.tv_sec + a.tv_usec;
-
-	    t = t + (ua - ub);
+void merge(int v[], int s, int m, int e, int aux[]) {
+    int i = s;
+	int j = m +1;
+   for(int k = 0; k< e-s+1; k++){
+		if ((v[i] < v[j]) && (i <= m) || (j > e )) {
+		    aux[k] = v[i];
+			i = i + 1;
+		    
+		} else{
+		    aux[k] = v[j];
+			j = j + 1;
+		    
+		}
 	}
-         
-        free(v);
-         
-        printf("%d \t %lf\n", n, t / 1000.0);
-    }
-    
-    return 0;
 }
+
+void merge_sort(int v[], int s, int e, int aux[]) {
+   
+
+    if (s < e) {
+		int m = floor((s + e) / 2);
+        merge_sort(v, s, m, aux);
+        merge_sort(v, m + 1, e, aux);
+        merge(v, s, m, e, aux);
+
+        for (int i = 0; i < e - s + 1; i++) {
+            v[s + i] = aux[i];
+        }
+    }
+}
+
+void main(){
+    int i, n, *v, *aux;
+    struct timeval b, c;
+    long long unsigned int ub, ua;
+	
+    for (n = 0; n <= 1000; n = n + 1){
+        v = (int *) malloc(n * sizeof(int));
+     	aux = (int *) malloc(n * sizeof(int));
+        for (i = 0; i < n; i++){
+            v[i] = i;
+		}
+        gettimeofday(&b, NULL);
+        merge_sort(v, 0, n-1, aux);
+        gettimeofday(&c, NULL);
+
+        free(v);
+
+        ub = 1000000 * b.tv_sec + b.tv_usec;
+        ua = 1000000 * c.tv_sec + c.tv_usec;
+        /**
+        printf("%ld %ld\n", b.tv_sec, b.tv_usec);
+        printf("%ld %ld\n", a.tv_sec, a.tv_usec);
+
+        printf("%lld - %lld = %lld\n", ua, ub, ua - ub);
+        **/
+ 
+        printf("%d \t %lld\n", n, ua - ub);
+
+
+    }
+}
+
+
