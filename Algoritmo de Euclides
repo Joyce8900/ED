@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int recursividade (n1,n2)
+{
+ 
+  if (n2 ==0)
+  {
+    return n1;
+  }
+  else{
+    return recursividade (n2,n1%n2);
+  }
+}
+
+int interativa (n1,n2)
+{
+  int aux;
+  while (n2 != 0){
+    aux =n2;
+    n2 =n1%n2;
+    }
+  n1 =aux;
+  return n1;
+}
+int main (void)
+{
+   int n1,n2;
+    
+    printf("Digite N1 e N2:");
+    scanf("%d %d",&n1, &n2);
+    printf("Com Recursividade: %d\n", recursividade (n1,n2));
+    recursividade (n1,n2); 
+    printf("Com Interatividade: %d\n", interativa (n1,n2));
+    interativa(n1,n2);
+}

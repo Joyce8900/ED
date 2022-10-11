@@ -1,0 +1,3 @@
+
+gcc insertion_sort_recursivo1.c
+./a.out > mediocaso.txt
