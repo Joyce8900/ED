@@ -12,7 +12,7 @@ def quickSort(v,s,e):
         quickSort (v,s,p-1)
         quickSort(v,p+1,e)
 
-    
+
     
 def partition (v,s,e):
     k =v[e]
@@ -31,6 +31,16 @@ def partition (v,s,e):
     return i+1
 
 
+
+
+def medio (v,t):
+  for x in range (0,t):
+    v.append(random.randint(1,t))
+  return v
+
+
+
+
 def tw ():
     for t in range (1,1001,100):
         total = 0 
@@ -42,10 +52,21 @@ def tw ():
             fim = (time())
             total = total + fim-inicial
         media = total/1000
-        print (f" {media:.5f}")
+        print (f"{media:.5f}")
            
 
-
+def ta():
+    for t in range (1,1001,100):
+        total = 0 
+        for j in range (0,10000):
+            v = []
+            v = medio(v,t)
+            inicial = (time())
+            quickSort(v,0,t-1)
+            fim = (time())
+            total = total + fim-inicial
+        media = total/1000
+        print (f" {media:.5f}")
 
 
 def tb ():
@@ -66,4 +87,4 @@ def array (v,t):
         v.append(i)
     return v
 
-tw ()
+ta ()
