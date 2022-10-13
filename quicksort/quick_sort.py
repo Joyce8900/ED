@@ -5,6 +5,11 @@ import random
 fim =0
 inicial = 0
 
+def array (v,t):
+    for i in range (0,t):
+        v.append(i)
+    return v
+
 
 def quickSort(v,s,e):
     if (s<e):
@@ -42,9 +47,9 @@ def medio (v,t):
 
 
 def tw ():
-    for t in range (1,1001,100):
+    for t in range (100,1001,100):
         total = 0 
-        for j in range (0,10000):
+        for j in range (0,1000):
             v = []
             v = array(v,t)
             inicial = (time())
@@ -52,13 +57,13 @@ def tw ():
             fim = (time())
             total = total + fim-inicial
         media = total/1000
-        print (f"{media:.5f}")
+        print (f"{t}     {media:.5f}")
            
 
 def ta():
-    for t in range (1,1001,100):
+    for t in range (100,1001,100):
         total = 0 
-        for j in range (0,10000):
+        for j in range (0,1000):
             v = []
             v = medio(v,t)
             inicial = (time())
@@ -66,11 +71,11 @@ def ta():
             fim = (time())
             total = total + fim-inicial
         media = total/1000
-        print (f" {media:.5f}")
+        print (f"{t}        {media:.5f}")
 
 
 def tb ():
-    for t in range (0,1001,100):
+    for t in range (100,1001,100):
         total = 0
         for j in range(0,10000):
             v=[]
@@ -79,12 +84,9 @@ def tb ():
             quickSort(v,0,t-1)
             fim = (time())
             total+= fim-inicial
-        media = total/1000
-        print (f"{t}    {media:.6f}")
+        media = total/10000
+        print (f"{t}           {media:.6f}")
+        
 
-def array (v,t):
-    for i in range (0,t):
-        v.append(i)
-    return v
 
-ta ()
+#ta()

@@ -1,0 +1,3 @@
+gnuplot> set terminal png
+gnuplot> set output 'imagem.png'
+gnuplot> replot
