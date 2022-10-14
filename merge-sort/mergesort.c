@@ -57,12 +57,7 @@ void main(){
 
         ub = 1000000 * b.tv_sec + b.tv_usec;
         ua = 1000000 * c.tv_sec + c.tv_usec;
-        /**
-        printf("%ld %ld\n", b.tv_sec, b.tv_usec);
-        printf("%ld %ld\n", a.tv_sec, a.tv_usec);
-
-        printf("%lld - %lld = %lld\n", ua, ub, ua - ub);
-        **/
+        
  
         printf("%d \t %lld\n", n, ua - ub);
 

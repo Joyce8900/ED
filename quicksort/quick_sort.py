@@ -1,6 +1,7 @@
 from time import time
 import random
-
+import sys
+sys.setrecursionlimit(5000)
 
 fim =0
 inicial = 0
@@ -77,16 +78,16 @@ def ta():
 def tb ():
     for t in range (100,1001,100):
         total = 0
-        for j in range(0,10000):
+        for j in range(0,1000):
             v=[]
             v=array(v,t)
             inicial = (time())
             quickSort(v,0,t-1)
             fim = (time())
             total+= fim-inicial
-        media = total/10000
+        media = total/1000
         print (f"{t}           {media:.6f}")
         
 
 
-#ta()
+tw()
