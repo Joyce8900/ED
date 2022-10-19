@@ -1,0 +1,41 @@
+class NodoArvore:
+    def __init__(self, chave=None, esquerda=None, direita=None):
+        self.chave = chave
+        self.esquerda = esquerda
+        self.direita = direita
+
+    def __repr__(self):
+        return '%s <- %s -> %s' % (self.esquerda and self.esquerda.chave,
+                                    self.chave,
+                                    self.direita and self.direita.chave)
+
+
+
+raiz = NodoArvore(40)
+
+raiz.esquerda = NodoArvore(20)
+raiz.direita  = NodoArvore(60)
+
+raiz.direita.esquerda  = NodoArvore(50)
+raiz.direita.direita   = NodoArvore(70)
+raiz.esquerda.esquerda = NodoArvore(10)
+raiz.esquerda.direita  = NodoArvore(30)
+raiz.esquerda.esquerda.esquerda = NodoArvore(5)
+raiz.esquerda.esquerda.direita = NodoArvore(8)
+raiz.esquerda.direita.direita = NodoArvore(35)
+raiz.esquerda.direita.esquerda = NodoArvore(24)
+raiz.direita.direita.direita = NodoArvore(71)
+raiz.direita.direita.esquerda= NodoArvore(60)
+raiz.direita.esquerda.direita = NodoArvore(52)
+raiz.direita.esquerda.esquerda = NodoArvore(49)
+
+
+
+
+print (raiz)
+print (raiz.esquerda)
+print (raiz.direita)
+print(raiz.esquerda.esquerda)
+print(raiz.direita.direita)
+print (raiz.esquerda.direita)
+print (raiz.direita.esquerda)
